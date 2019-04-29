@@ -13,6 +13,14 @@
       var onButtonClick = function() {
 
 
+        if(turn == 9){
+        gameOver = true;
+        result.textContent = "It's a tie!";
+        };
+
+
+
+
         //X's turn
         if (turn % 2 == 0) {
           player = "X";
@@ -26,17 +34,12 @@
         }
         turn++;
 
-        //set clicked button text to X or O
+        //button on grid is clicked
         if(gameOver == false){
             this.textContent = player;
 
-
-
-
-
-                //clickedInt is index in the grid
+                //add X or O to the button clicked
                 var clickedInt = parseInt(this.id.substring(6, 7));
-                //add X or O to that index in the grid
                 grid[clickedInt] = player;
 
               function checkWin(myNum, delta){
@@ -74,6 +77,7 @@
         turn = 0;
         console.log(grid);
         result.textContent = "";
+        gameOver = false;
         for (var i = 0; i < 9; i++) {
 
           document.getElementById("button" + i).textContent = "";
