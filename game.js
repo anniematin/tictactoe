@@ -1,10 +1,14 @@
   // 1. Find and store the element we want to listen to events on.
 
+    var result = document.getElementById("game-result");
+
       // 2. Define the function that will respond to the event.
       var turn = 0;
       var player = "X";
       var grid = [];
       var gameOver = false;
+
+
 
       var onButtonClick = function() {
 
@@ -22,38 +26,43 @@
         }
         turn++;
 
-        //set button text to X or O
-        this.textContent = player;
+        //set clicked button text to X or O
+        if(gameOver == false){
+            this.textContent = player;
 
 
-        //clickedInt is index in the grid
-        var clickedInt = parseInt(this.id.substring(6, 7));
-        //add X or O to that index in the grid
-        grid[clickedInt] = player;
-
-      function checkWin(myNum, delta){
-      	if(grid[myNum] != undefined){
-          if(grid[myNum] == grid[myNum-delta] && grid[myNum] == grid[myNum+delta] ){
-
-            console.log(player + " wins");
-
-          }
 
 
-		}
-       }
-        checkWin(4,1);
-        checkWin(4,3);
-        checkWin(4,2);
-        checkWin(4,4);
 
-        checkWin(1,1);
-        checkWin(7,1);
+                //clickedInt is index in the grid
+                var clickedInt = parseInt(this.id.substring(6, 7));
+                //add X or O to that index in the grid
+                grid[clickedInt] = player;
 
-        checkWin(3,3);
-        checkWin(5,3);
+              function checkWin(myNum, delta){
+                if(grid[myNum] != undefined){
+                  if(grid[myNum] == grid[myNum-delta] && grid[myNum] == grid[myNum+delta] ){
+
+                    result.textContent = "Player " +player + " wins!";
+                    gameOver = true;
+
+                  }
 
 
+                }
+               }
+                checkWin(4,1);
+                checkWin(4,3);
+                checkWin(4,2);
+                checkWin(4,4);
+
+                checkWin(1,1);
+                checkWin(7,1);
+
+                checkWin(3,3);
+                checkWin(5,3);
+
+        }
 
 
 
@@ -64,9 +73,10 @@
         grid = [];
         turn = 0;
         console.log(grid);
+        result.textContent = "";
         for (var i = 0; i < 9; i++) {
 
-          document.getElementById("button" + i).innerHTML = "";
+          document.getElementById("button" + i).textContent = "";
         }
       }
 
