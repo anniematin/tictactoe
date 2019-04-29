@@ -28,7 +28,7 @@
     <button class="button" , id="button8"></button>
     <br>
     <br>
-    <button class="button" , id="reset">Reset Game</button>
+    <button class="button" , id="reset">New Game</button>
 
     <div id="game-result">
     </div>
@@ -98,11 +98,12 @@
       }
       var onResetButtonClick = function() {
         grid = [];
+        turn = 0;
         console.log(grid);
-        //for (var i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
 
-          this.innerHTML = "";
-        //}
+          document.getElementById("button" + i).innerHTML = "";
+        }
       }
       
       
