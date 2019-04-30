@@ -1,18 +1,20 @@
-  // 1. Find and store the element we want to listen to events on.
 
+    //store result button and space to put the game result text
     var result = document.getElementById("game-result");
     var reset = document.getElementById("reset");
 
     var turn = 0;
-    var player = "X";
+    var player;
     var grid = [];
     var gameOver = false;
 
+    document.getElementById("button0").textContent = " ";
 
 
     function checkWin(myNum, delta){
       if(grid[myNum] != undefined){
         if(grid[myNum] == grid[myNum-delta] && grid[myNum] == grid[myNum+delta] ){
+
 
           result.textContent = "Player " +player + " wins!";
           gameOver = true;
@@ -23,7 +25,7 @@
       }
      }
 
-      //Click tic tac toe buttons
+      //Click tic tac toe grid buttons
       var onButtonClick = function() {
 
         //get the index of the button clicked
@@ -52,15 +54,13 @@
 
 
 
-
+            //check all 8 winning combinations if the current move made a win
             checkWin(4,1);
             checkWin(4,3);
             checkWin(4,2);
             checkWin(4,4);
-
             checkWin(1,1);
             checkWin(7,1);
-
             checkWin(3,3);
             checkWin(5,3);
 
@@ -89,7 +89,7 @@
 
 
 
-      // 3. Add the event listener for the element and function
+      // Add event listeners to buttons
       for (var i = 0; i < 9; i++) {
 
         document.getElementById("button" + i).addEventListener("click", onButtonClick);
