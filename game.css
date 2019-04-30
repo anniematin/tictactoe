@@ -1,0 +1,17 @@
+    body {
+        font-family: sans-serif;
+        color: rgb(211, 122, 255);
+    }
+
+    .button-grid{
+
+        height:50px;
+        width:50px;
+        font-size: 14px;
+        padding:14px 14px;
+        vertical-align: middle;
+        background-color: #ffffff;
+        font-family: sans-serif;
+
+
+    }
