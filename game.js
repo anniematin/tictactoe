@@ -1,38 +1,38 @@
 
-    //store result button and space to put the game result text
+    //create variables and functions used in button clicking events
     var result = document.getElementById("game-result");
     var reset = document.getElementById("reset");
 
     var turn = 0;
     var player;
-    var grid = [];
     var gameOver = false;
-
-    document.getElementById("button0").textContent = " ";
 
 
     function checkWin(myNum, delta){
-      if(grid[myNum] != undefined){
-        if(grid[myNum] == grid[myNum-delta] && grid[myNum] == grid[myNum+delta] ){
+        var low = document.getElementById("button" + (myNum - delta));
+        var mid = document.getElementById("button" + myNum);
+        var high = document.getElementById("button" + (myNum + delta));
 
+
+        if(low.textContent == mid.textContent && high.textContent == mid.textContent ){
+
+          low.style.backgroundColor = "rgb(211, 122, 255)";
+          mid.style.backgroundColor = "rgb(211, 122, 255)";
+          high.style.backgroundColor = "rgb(211, 122, 255)";
 
           result.textContent = "Player " +player + " wins!";
+
           gameOver = true;
 
         }
-
-
-      }
      }
+
 
       //Click tic tac toe grid buttons
       var onButtonClick = function() {
 
-        //get the index of the button clicked
-        var clickedInt = parseInt(this.id.substring(6, 7));
-
         //player can only move if game is not over and a player has not clicked on that button
-        if(gameOver == false && grid[clickedInt] == undefined){
+        if(gameOver == false && this.textContent == " "){
 
 
 
@@ -48,13 +48,12 @@
             }
             turn++;
 
-            //set button text and grid value to X or O
+            //set button text to X or O
             this.textContent = player;
-            grid[clickedInt] = player;
 
 
 
-            //check all 8 winning combinations if the current move made a win
+            //check the 8 winning combinations if the current move made a win
             checkWin(4,1);
             checkWin(4,3);
             checkWin(4,2);
@@ -77,13 +76,15 @@
 
       //Click new game button
       var onResetButtonClick = function() {
-        grid = [];
         turn = 0;
         result.textContent = "";
         gameOver = false;
         for (var i = 0; i < 9; i++) {
 
-          document.getElementById("button" + i).textContent = "";
+          var currButton = document.getElementById("button" + i);
+
+          currButton.textContent = " ";
+          currButton.style.backgroundColor = "#ffffff";
         }
       }
 
@@ -91,7 +92,6 @@
 
       // Add event listeners to buttons
       for (var i = 0; i < 9; i++) {
-
         document.getElementById("button" + i).addEventListener("click", onButtonClick);
       }
       reset.addEventListener("click", onResetButtonClick);
