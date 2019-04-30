@@ -13,17 +13,18 @@
         var mid = document.getElementById("button" + myNum);
         var high = document.getElementById("button" + (myNum + delta));
 
+        if(mid.textContent != " "){
+            if(low.textContent == mid.textContent && high.textContent == mid.textContent ){
 
-        if(low.textContent == mid.textContent && high.textContent == mid.textContent ){
+              low.style.backgroundColor = "rgb(211, 122, 255)";
+              mid.style.backgroundColor = "rgb(211, 122, 255)";
+              high.style.backgroundColor = "rgb(211, 122, 255)";
 
-          low.style.backgroundColor = "rgb(211, 122, 255)";
-          mid.style.backgroundColor = "rgb(211, 122, 255)";
-          high.style.backgroundColor = "rgb(211, 122, 255)";
+              result.textContent = "Player " +player + " wins!";
 
-          result.textContent = "Player " +player + " wins!";
+              gameOver = true;
 
-          gameOver = true;
-
+            }
         }
      }
 
