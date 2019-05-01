@@ -1,6 +1,6 @@
 
     //create variables and functions used in button clicking events
-    var result = document.getElementById("game-result");
+    var result = document.getElementById("result");
     var reset = document.getElementById("reset");
 
     var turn = 0;
@@ -40,11 +40,15 @@
             //figure out if current player is X or O
             if (turn % 2 == 0) {
               player = "X";
+              //set text for the next player's turn
+              result.textContent = "Player O's turn";
 
 
             }
             else {
               player = "O";
+              //set text for the next player's turn
+              result.textContent = "Player X's turn";
 
             }
             turn++;
@@ -80,6 +84,7 @@
         turn = 0;
         result.textContent = "";
         gameOver = false;
+        result.textContent = "Player X takes the first turn!";
         for (var i = 0; i < 9; i++) {
 
           var currButton = document.getElementById("button" + i);

@@ -10,8 +10,17 @@
         font-size: 14px;
         padding:14px 14px;
         vertical-align: middle;
-        background-color: #ffffff;
+        background-color: #ff;
         font-family: sans-serif;
 
 
     }
+    .button-reset{
+
+
+            vertical-align: middle;
+            background-color: #ff;
+            font-family: sans-serif;
+
+
+        }
