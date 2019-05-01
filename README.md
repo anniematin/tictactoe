@@ -6,7 +6,11 @@ Clone or download the project.
 
 Right click game.html and choose open with browser.
 
-From command line, cd into tictactoe project, and run "open game.html" to open game in browser.
+From command line, cd into tictactoe project.
+
+To open game in browser:
+Mac: "open game.html".
+Windows: "start game.html".
 
 
 # Author
